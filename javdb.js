@@ -1,6 +1,5 @@
-//alert("hello world");
-console.log("hello world");
-//function loadImgAsBase64(url, callback)
+
+
 function copytitle(){
     var input = document.createElement('input');
     document.body.appendChild(input);

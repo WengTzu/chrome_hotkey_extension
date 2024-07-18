@@ -50,6 +50,12 @@ chrome.commands.onCommand.addListener(function (command, tab) {
                 window.open(url, '_blank').focus();
                 return; // Exit the function if the check fails
             }
+            else if (sid.length < 4) {
+                console.log("Selected text is too short.");
+                // chrome.tabs.create({ url: url }); 
+                window.open(url, '_blank').focus();
+                return; // Exit the function if the check fails
+            }
 
             try {
                 let response = await fetch(url);
