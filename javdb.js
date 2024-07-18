@@ -1,6 +1,5 @@
-//alert("hello world");
-console.log("hello world");
-//function loadImgAsBase64(url, callback)
+
+
 function copytitle(){
     var input = document.createElement('input');
     document.body.appendChild(input);
@@ -94,11 +93,8 @@ function bitcomet_fetch(magnet) {
         method: 'POST',
         headers: {
             "Content-Type": "application/x-www-form-urlencoded",
-            // "Authorization": "Basic YXhpb25nOmF4aW9uZ2luYml0Y29tZXQ=",
-            // Include other headers as needed
         },
         body: bodyContent, // FormData object automatically sets the Content-Type to 'multipart/form-data', which is suitable for form submission
         credentials: 'include', // Send cookies with cross-origin requests
-        // mode: 'cors' // Use CORS mode for cross-origin requests
     })
 }
