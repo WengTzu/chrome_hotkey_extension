@@ -1,0 +1,103 @@
+{
+  "manifest_version": 3,
+  "name": "magnet_autocopy",
+  "description": "快捷鍵Ctrl+Shift+X。For色花堂，自動複製網頁中的magnet(class=blockcode)，過1.5秒後複製名稱(id=thread_subject)，自動下載兩張圖片(t_f.NodeName=IMG,IGNORE_JS_OP)",
+  "version": "3.1",
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  },
+  "action": {
+    "default_title": "magnet_autocopy",
+    "default_icon": "icon.png"
+  },
+  "permissions": [
+    "tabs",
+    "activeTab",
+    "declarativeContent",
+    "notifications",
+    "nativeMessaging",
+    "scripting",
+    "contextMenus"
+  ],
+  "commands": {
+    // "copy-magnet-name": {  
+    //   "description": "複製magnet與thread_subject"  
+    // },
+    // "native_messaging" :{
+    //   "description": "native message"
+    // },
+    "search_on_jav": {
+      "suggested_key": {
+        "windows": "Ctrl+Shift+S"
+      },
+      "description": "search_on_jav"
+    },
+    "search_on_cambridge": {
+      "suggested_key": {
+        "windows": "Ctrl+Shift+W"
+      },
+      "description": "search_on_cambridge"
+    },
+    "search_on_longman": {
+      // "suggested_key": {
+      //   "windows": "Ctrl+Shift+E"
+      // },
+      "description": "search_on_longman"
+    },
+    "search_on_yahoo": {
+      // "suggested_key": {
+      //   "windows": "Ctrl+Shift+D"
+      // },
+      "description": "search_on_yahoo"
+    },
+    "search_on_skell": {
+      // "suggested_key": {
+      //   "windows": "Ctrl+Shift+F"
+      // },
+      "description": "search_on_skell"
+    },
+    "search_on_wordhippo": {
+      "suggested_key": {
+        "windows": "Ctrl+Shift+A"
+      },
+      "description": "search_on_wordhippo"
+    },
+    "search_on_google": {
+      "suggested_key": {
+        "windows": "Ctrl+Shift+G"
+      },
+      "description": "search_on_google"
+    }
+  },
+  "background": {
+    "service_worker": "event.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://javdb.com/v/*"
+      ],
+      "js": [
+        "javdb.js"
+      ]
+    },
+    {
+      "matches": [
+        "https://javdb.com/*"
+      ],
+      "js": [
+        "javdb_rate.js"
+      ]
+    },
+    {
+      "matches": [
+        "https://www.sehuatang.org/thread*"
+      ],
+      "js": [
+        "sehuatang.js"
+      ]
+    }
+  ]
+}
