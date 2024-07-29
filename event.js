@@ -13,6 +13,7 @@ chrome.commands.onCommand.addListener(function (command, tab) {
     function getSelectedTextFromPage() {
         // Retrieve the current text selection from the window
         const selection = window.getSelection().toString();
+        console.log('Selected text:', selection);
         // Process the selected text (this step is optional and can be customized)
         // For demonstration, let's just return the trimmed version of the selected text
         // return selectedText.trim();
@@ -20,21 +21,21 @@ chrome.commands.onCommand.addListener(function (command, tab) {
         if (selection) {
             return selection.trim(); // Return the selection if it's not empty
         } else {
-            // // If the main window has no selection, check iframes
-            // const iframes = document.getElementsByTagName('iframe');
-            // for (let i = 0; i < iframes.length; i++) {
-            //     try {
-            //         // Attempt to access iframe content
-            //         const iframeDoc = iframes[i].contentDocument || iframes[i].contentWindow.document;
-            //         const iframeSelection = iframeDoc.getSelection().toString();
-            //         if (iframeSelection) {
-            //             return iframeSelection; // Return the selection from the iframe
-            //         }
-            //     } catch (e) {
-            //         console.error('Error accessing iframe content:', e);
-            //         // Iframe content might not be accessible due to same-origin policy
-            //     }
-            // }
+            // If the main window has no selection, check iframes
+            const iframes = document.getElementsByTagName('iframe');
+            for (let i = 0; i < iframes.length; i++) {
+                try {
+                    // Attempt to access iframe content
+                    const iframeDoc = iframes[i].contentDocument || iframes[i].contentWindow.document;
+                    const iframeSelection = iframeDoc.getSelection().toString();
+                    if (iframeSelection) {
+                        return iframeSelection; // Return the selection from the iframe
+                    }
+                } catch (e) {
+                    console.error('Error accessing iframe content:', e);
+                    // Iframe content might not be accessible due to same-origin policy
+                }
+            }
         }
     }
 

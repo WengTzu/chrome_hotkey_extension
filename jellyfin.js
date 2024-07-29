@@ -1,13 +1,33 @@
+
 // Insert an iframe
-function insertIframe(keyword = '777', position = "upper") {
+function insertIframe(keyword = '777', position = "upper", id="jellyfin_inserted") {
     var iframe = document.createElement('iframe');
     iframe.setAttribute('src', 'https://192.168.50.7:8920/web/#/search.html?query=' + keyword);
+    iframe.setAttribute('id', id);
     iframe.style.width = "100%"; // Make iframe fill the div
     iframe.style.height = "100%"; // Make iframe fill the div
 
     // Add sandbox attribute with some permissions
     // iframe.setAttribute('sandbox', 'allow-scripts allow-forms allow-same-origin');
+    // iframe.addEventListener('load', function () {
+    //     console.log('Iframe content loaded');
+    //     window.parent.postMessage({ action: 'iframe-loaded' }, '*');
+    //     // You can add more actions here
+    // });
+    
+        
+    iframe.addEventListener('load', function () {
+        console.log('Iframe content loaded');
+        window.parent.postMessage({ action: 'iframe-loaded' }, '*');
+        // You can add more actions here
 
+        // Add event listener for selection change inside the iframe
+        // iframe.contentWindow.document.addEventListener('selectionchange', function () {
+        //     var selectedText = iframe.contentWindow.getSelection().toString();
+        //     console.log('Selected text in iframe:', selectedText);
+        //     window.parent.postMessage({ action: 'selected-text', text: selectedText }, '*');
+        // });
+    });
 
     // Create a div with class 'columns'
     var columnsDiv = document.createElement('div');
@@ -24,17 +44,17 @@ function insertIframe(keyword = '777', position = "upper") {
     // Append the column div to the columns div
     columnsDiv.appendChild(columnDiv);
 
-    if (iframe.attachEvent) {
-        iframe.attachEvent("onload", function () {
-            document.querySelector("#video-search").focus();
-            window.scrollTo(0, 0)
-        });
-    } else {
-        iframe.onload = function () {
-            document.querySelector("#video-search").focus();
-            window.scrollTo(0, 0)
-        };
-    }
+    // if (iframe.attachEvent) {
+    //     iframe.attachEvent("onload", function () {
+    //         document.querySelector("#video-search").focus();
+    //         window.scrollTo(0, 0)
+    //     });
+    // } else {
+    //     iframe.onload = function () {
+    //         document.querySelector("#video-search").focus();
+    //         window.scrollTo(0, 0)
+    //     };
+    // }
     var anchor = document.querySelector("body > section > div > div.video-detail")
     if (position == "upper") {
          var thirdChild = anchor.children[2]; // Children are 0-indexed
@@ -77,6 +97,27 @@ function getFemaleActor() {
 //     insertIframe(actor, "lower");
 // });
 // insert by ssid
+
+window.addEventListener('message', function (event) {
+    // Check the origin of the message to ensure it's from a trusted source
+    if (event.origin !== 'https://javdb.com') {
+        return;
+    }
+
+    // Handle the message
+    if (event.data.action === 'iframe-loaded') {
+        console.log('Received message from iframe: ', event.data);
+        // You can add more actions here
+    }
+    console.log('Received message from iframe: ', event.data);
+
+    if (event.data.action === 'selected-text') {
+        console.log('Selected text from iframe: ', event.data.text);
+        // You can add more actions here
+    }
+
+}, false);
+
 ssid = document.querySelector("body > section > div > div.video-detail > h2 > strong:nth-child(1)").innerText
 ssid = ssid.replace(/\s/g, '');
-insertIframe(ssid.split('-').pop(), "upper");
+insertIframe(ssid.split('-').pop(), "upper", "inserted_jellyfin_query");
