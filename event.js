@@ -20,33 +20,34 @@ chrome.commands.onCommand.addListener(function (command, tab) {
 
         if (selection) {
             return selection.trim(); // Return the selection if it's not empty
-        } else {
-            // If the main window has no selection, check iframes
-            const iframes = document.getElementsByTagName('iframe');
-            for (let i = 0; i < iframes.length; i++) {
-                try {
-                    // Attempt to access iframe content
-                    const iframeDoc = iframes[i].contentDocument || iframes[i].contentWindow.document;
-                    const iframeSelection = iframeDoc.getSelection().toString();
-                    if (iframeSelection) {
-                        return iframeSelection; // Return the selection from the iframe
-                    }
-                } catch (e) {
-                    console.error('Error accessing iframe content:', e);
-                    // Iframe content might not be accessible due to same-origin policy
-                }
-            }
-        }
+        } 
+        // else {
+        //     // If the main window has no selection, check iframes
+        //     const iframes = document.getElementsByTagName('iframe');
+        //     for (let i = 0; i < iframes.length; i++) {
+        //         try {
+        //             // Attempt to access iframe content
+        //             const iframeDoc = iframes[i].contentDocument || iframes[i].contentWindow.document;
+        //             const iframeSelection = iframeDoc.getSelection().toString();
+        //             if (iframeSelection) {
+        //                 return iframeSelection; // Return the selection from the iframe
+        //             }
+        //         } catch (e) {
+        //             console.error('Error accessing iframe content:', e);
+        //             // Iframe content might not be accessible due to same-origin policy
+        //         }
+        //     }
+        // }
     }
 
-    chrome.scripting.executeScript({
-        target: { tabId: tab.id },
-        function: getSelectedTextFromPage
-    }, (results) => {
-        // results[0].result will contain the value returned by getSelectedTextFromPage
-        selectedTextGlobal = results[0].result;
-        console.log('Selected text:', results[0].result);
-    });
+    // chrome.scripting.executeScript({
+    //     target: { tabId: tab.id },
+    //     function: getSelectedTextFromPage
+    // }, (results) => {
+    //     // results[0].result will contain the value returned by getSelectedTextFromPage
+    //     selectedTextGlobal = results[0].result;
+    //     console.log('Selected text:', results[0].result);
+    // });
 
     //const tabId = getTabId()
     if (command == "copy-magnet-name") {
@@ -70,7 +71,8 @@ chrome.commands.onCommand.addListener(function (command, tab) {
     }
 
     if (command == "search_on_jav") {
-        async function getElementsWithoutOpen(sid) {
+        async function getElementsWithoutOpen() {
+            const sid = window.getSelection().toString();
             console.log('search on jav')
             // var sid = selectedTextGlobal
             console.log("get selected", sid);
@@ -126,7 +128,7 @@ chrome.commands.onCommand.addListener(function (command, tab) {
         chrome.scripting.executeScript({
             target: { tabId: tab.id },
             function: getElementsWithoutOpen,
-            args: [selectedTextGlobal],
+            // args: [selectedTextGlobal],
         });
     }
     

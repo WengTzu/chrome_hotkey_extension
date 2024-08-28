@@ -1,8 +1,8 @@
-
+const JELLYFIN_URL_QUERY = "https://192.168.50.7:2096/web/#/search.html?query=";
 // Insert an iframe
 function insertIframe(keyword = '777', position = "upper", id="jellyfin_inserted") {
     var iframe = document.createElement('iframe');
-    iframe.setAttribute('src', 'https://192.168.50.7:8920/web/#/search.html?query=' + keyword);
+    iframe.setAttribute('src', JELLYFIN_URL_QUERY + keyword);
     iframe.setAttribute('id', id);
     iframe.style.width = "100%"; // Make iframe fill the div
     iframe.style.height = "100%"; // Make iframe fill the div
