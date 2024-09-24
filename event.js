@@ -71,12 +71,30 @@ chrome.commands.onCommand.addListener(function (command, tab) {
     }
 
     if (command == "search_on_jav") {
+        // function getElementsWithoutOpen() {
         async function getElementsWithoutOpen() {
-            const sid = window.getSelection().toString();
+            sid = window.getSelection().toString();
             console.log('search on jav')
             // var sid = selectedTextGlobal
             console.log("get selected", sid);
+            // Remove spaces and hyphens from sid
+            // "300mium-545-C 300MIUM-1078 (2)  390JAC-186-C_GG5 SIRO-5170 (2).HD"
+            // Remove spaces
+            sid = sid.replace(/\s+/g, '');
+            // Remove _GG5
+            sid = sid.replace(/_GG5/g, '');
+            // Remove -C or -c
+            sid = sid.replace(/-C|-c/g, '');
+            // Remove parentheses
+            sid = sid.replace(/\(\d+\)/g, '');
+            // Remove .HD
+            sid = sid.replace(/\.HD/g, '');
+            // Remove 2).com@529STCV-461	
+            sid = sid.replace(/.*@/, '');
+            // Remove square brackets and their contents
+            sid = sid.replace(/.*]/, '');
 
+            console.log("get and filter selected", sid);
             // let sids = selected.split(" ");
             // console.log("sid", sids);
 
