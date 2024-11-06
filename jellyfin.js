@@ -6,27 +6,12 @@ function insertIframe(keyword = '777', position = "upper", id="jellyfin_inserted
     iframe.setAttribute('id', id);
     iframe.style.width = "100%"; // Make iframe fill the div
     iframe.style.height = "100%"; // Make iframe fill the div
-
-    // Add sandbox attribute with some permissions
-    // iframe.setAttribute('sandbox', 'allow-scripts allow-forms allow-same-origin');
-    // iframe.addEventListener('load', function () {
-    //     console.log('Iframe content loaded');
-    //     window.parent.postMessage({ action: 'iframe-loaded' }, '*');
-    //     // You can add more actions here
-    // });
-    
+    iframe.style.resize = 'both'; // Allow resizing in both directions
+    iframe.style.overflow = 'auto'; // Add scrollbars if needed  
         
     iframe.addEventListener('load', function () {
         console.log('Iframe content loaded');
         window.parent.postMessage({ action: 'iframe-loaded' }, '*');
-        // You can add more actions here
-
-        // Add event listener for selection change inside the iframe
-        // iframe.contentWindow.document.addEventListener('selectionchange', function () {
-        //     var selectedText = iframe.contentWindow.getSelection().toString();
-        //     console.log('Selected text in iframe:', selectedText);
-        //     window.parent.postMessage({ action: 'selected-text', text: selectedText }, '*');
-        // });
     });
 
     // Create a div with class 'columns'
@@ -34,31 +19,43 @@ function insertIframe(keyword = '777', position = "upper", id="jellyfin_inserted
     columnsDiv.className = 'columns';
     // columnsDiv.style.width = "100%"; // Optional: Adjust as needed
     columnsDiv.style.height = "40vh"; // Optional: Adjust as needed, e.g., to fill the viewport height
+    columnsDiv.style.resize = 'both'; // Allow resizing in both directions
+    columnsDiv.style.overflow = 'auto'; // Add scrollbars if needed
 
     // Create a div with class 'column' and append the iframe to it
     var columnDiv = document.createElement('div');
     columnDiv.className = 'column';
+    
     columnDiv.style.width = "100%"; // Ensure the div fills its parent
     columnDiv.style.height = "100%"; // Ensure the div fills its parent
+    columnDiv.style.resize = 'both'; // Allow resizing in both directions
+    columnDiv.style.overflow = 'auto'; // Add scrollbars if needed
+
+
     columnDiv.appendChild(iframe);
     // Append the column div to the columns div
     columnsDiv.appendChild(columnDiv);
 
-    // if (iframe.attachEvent) {
-    //     iframe.attachEvent("onload", function () {
-    //         document.querySelector("#video-search").focus();
-    //         window.scrollTo(0, 0)
-    //     });
-    // } else {
-    //     iframe.onload = function () {
-    //         document.querySelector("#video-search").focus();
-    //         window.scrollTo(0, 0)
-    //     };
-    // }
+
+
+    var columnsURL = document.createElement('div');
+
+    // Create a clickable URL outside the iframe
+    var clickableUrl = document.createElement('a');
+    clickableUrl.setAttribute('href', JELLYFIN_URL_QUERY + keyword);
+    // clickableUrl.setAttribute('target', '_blank'); // Open in a new tab
+    clickableUrl.textContent = 'Open Jellyfin Search';
+    clickableUrl.style.display = 'block'; // Make it a block element for better layout
+
+    // Append the clickable URL to the columnsDiv
+    columnsURL.appendChild(clickableUrl);
+
     var anchor = document.querySelector("body > section > div > div.video-detail")
     if (position == "upper") {
-         var thirdChild = anchor.children[2]; // Children are 0-indexed
+        var thirdChild = anchor.children[2]; // Children are 0-indexed
+        anchor.insertBefore(columnsURL, thirdChild);
         anchor.insertBefore(columnsDiv, thirdChild);
+        
 
     }
     if (position == "lower") {
@@ -120,4 +117,5 @@ window.addEventListener('message', function (event) {
 
 ssid = document.querySelector("body > section > div > div.video-detail > h2 > strong:nth-child(1)").innerText
 ssid = ssid.replace(/\s/g, '');
-insertIframe(ssid.split('-').pop(), "upper", "inserted_jellyfin_query");
+keyword = ssid.split('-').pop();
+insertIframe(keyword, "upper", "inserted_jellyfin_query");
