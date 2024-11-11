@@ -78,6 +78,14 @@
   "content_scripts": [
     {
       "matches": [
+        "https://*/panel/task_list"
+      ],
+      "js": [
+        "bitcomet_web.js"
+      ]
+    },
+    {
+      "matches": [
         "https://javdb.com/v/*"
       ],
       "js": [
