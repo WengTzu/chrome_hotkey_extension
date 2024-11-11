@@ -1,0 +1,676 @@
+<body monica-locale="zh_TW" monica-id="fhimbbbmdjiifimnepkibjfjbppnjble" monica-version="6.7.1"> <a
+        href="/panel/">Home</a> &gt; Tasks &gt; <b>All</b>(42) | <a
+        href="/panel/task_list?group=downloading">Downloading</a>(33) | <a
+        href="/panel/task_list?group=completed">Completed</a>(9) | <a
+        href="/panel/task_list?group=active">Active</a>(37)<br> <br>
+    <table border="0" cellpadding="0" cellspacing="0">
+        <tbody>
+            <tr>
+                <td width="150">Add Download:</td>
+                <td> <a href="/panel/task_add_magnet">Magnet Link</a> | <a href="/panel/task_add_bt">Torrent File </a> |
+                    <a href="/panel/task_add_httpftp">HTTP / FTP</a> </td>
+                <td> </td>
+            </tr>
+            <tr>
+                <td width="150">Actions:</td>
+                <td> <button id="start_all_download" onclick="on_task_list_action(id)">Start all tasks for
+                        downloading</button> <button id="start_all_seeding" onclick="on_task_list_action(id)">Start all
+                        tasks for seeding</button> <button id="stop_all" onclick="on_task_list_action(id)">Stop all
+                        tasks</button><br> <button id="suspend_all" onclick="on_task_list_action(id)">Suspend all active
+                        tasks</button> <button id="resume_all" onclick="on_task_list_action(id)">Resume last suspended
+                        tasks</button> </td>
+                <td> </td>
+            </tr>
+        </tbody>
+    </table> <br>
+    <table cellspacing="0">
+        <tbody>
+            <tr>
+                <td>Up Time: 347 h 0 m 57 s </td>
+            </tr>
+            <tr>
+                <td>Download Rate: 176 KB/s </td>
+                <td>[Max: <span id="down_rate_max">Unlimited</span>] </td>
+                <td> <span id="down_rate_max_set"><button onclick="show_down_rate_max_box()">Set</button></span> <span
+                        id="down_rate_max_box" style="display:none"> <input type="text" id="textDownRateMaxKB" value="0"
+                            size="7">KB/s <button id="submit_down_rate_max"
+                            onclick="submit_down_rate_max()">Submit</button> </span> </td>
+            </tr>
+            <tr>
+                <td>Upload Rate: 7 KB/s </td>
+                <td>[Max: <span id="up_rate_max">Unlimited</span>] </td>
+                <td> <span id="up_rate_max_set"><button onclick="show_up_rate_max_box()">Set</button></span> <span
+                        id="up_rate_max_box" style="display:none"> <input type="text" id="textUpRateMaxKB" value="0"
+                            size="7">KB/s <button id="submit_up_rate_max" onclick="submit_up_rate_max()">Submit</button>
+                    </span> </td>
+            </tr>
+        </tbody>
+    </table> <br>
+    <table border="1" cellpadding="0" cellspacing="0">
+        <tbody>
+            <tr>
+                <th bgcolor="#99CCFF">
+                    <div align="center">Type</div>
+                </th>
+                <th bgcolor="#99CCFF">
+                    <div align="center">Name</div>
+                </th>
+                <th bgcolor="#99CCFF">
+                    <div align="center">State</div>
+                </th>
+                <th bgcolor="#99CCFF">
+                    <div align="center">Action</div>
+                </th>
+                <th bgcolor="#99CCFF">
+                    <div align="center">Size</div>
+                </th>
+                <th bgcolor="#99CCFF">
+                    <div align="center">Progress</div>
+                </th>
+                <th bgcolor="#99CCFF">
+                    <div align="center">Down Rate</div>
+                </th>
+                <th bgcolor="#99CCFF">
+                    <div align="center">Up Rate</div>
+                </th>
+                <th bgcolor="#99CCFF">
+                    <div align="center">Delete Task</div>
+                </th>
+            </tr>
+            <tr>
+                <td style="text-align:center"> BT </td>
+                <td style="text-align:left"><a href="/panel/task_detail?id=1057"> mimk-179 (2) </a></td>
+                <td> running </td>
+                <td style="text-align:center"><a href="/panel/task_action?id=1057&amp;action=stop"> stop </a></td>
+                <td style="text-align:right"> 5.60 GB </td>
+                <td style="text-align:right"> 100.0% </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td><a href="/panel/task_delete?id=1057&amp;action=delete_task"
+                        onclick="return confirm(&quot;Delete Task?&quot;);">delete</a>/ <a
+                        href="/panel/task_delete?id=1057&amp;action=delete_all"
+                        onclick="return confirm(&quot;Delete Task and Downloaded Files?&quot;);">incl files</a></td>
+            </tr>
+            <tr>
+                <td style="text-align:center"> BT </td>
+                <td style="text-align:left"><a href="/panel/task_detail?id=1055"> mukc-076 </a></td>
+                <td> running </td>
+                <td style="text-align:center"><a href="/panel/task_action?id=1055&amp;action=stop"> stop </a></td>
+                <td style="text-align:right"> 5.78 GB </td>
+                <td style="text-align:right"> 0.0% </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td><a href="/panel/task_delete?id=1055&amp;action=delete_task"
+                        onclick="return confirm(&quot;Delete Task?&quot;);">delete</a>/ <a
+                        href="/panel/task_delete?id=1055&amp;action=delete_all"
+                        onclick="return confirm(&quot;Delete Task and Downloaded Files?&quot;);">incl files</a></td>
+            </tr>
+            <tr>
+                <td style="text-align:center"> BT </td>
+                <td style="text-align:left"><a href="/panel/task_detail?id=1054"> MUKC-076 </a></td>
+                <td> queued </td>
+                <td style="text-align:center"><a href="/panel/task_action?id=1054&amp;action=start"> start </a></td>
+                <td style="text-align:right"> 5.61 GB </td>
+                <td style="text-align:right"> 0.0% </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td><a href="/panel/task_delete?id=1054&amp;action=delete_task"
+                        onclick="return confirm(&quot;Delete Task?&quot;);">delete</a>/ <a
+                        href="/panel/task_delete?id=1054&amp;action=delete_all"
+                        onclick="return confirm(&quot;Delete Task and Downloaded Files?&quot;);">incl files</a></td>
+            </tr>
+            <tr>
+                <td style="text-align:center"> BT </td>
+                <td style="text-align:left"><a href="/panel/task_detail?id=1053"> 116655.xyz WZEN-077 </a></td>
+                <td> queued </td>
+                <td style="text-align:center"><a href="/panel/task_action?id=1053&amp;action=start"> start </a></td>
+                <td style="text-align:right"> 6.78 GB </td>
+                <td style="text-align:right"> 0.0% </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td><a href="/panel/task_delete?id=1053&amp;action=delete_task"
+                        onclick="return confirm(&quot;Delete Task?&quot;);">delete</a>/ <a
+                        href="/panel/task_delete?id=1053&amp;action=delete_all"
+                        onclick="return confirm(&quot;Delete Task and Downloaded Files?&quot;);">incl files</a></td>
+            </tr>
+            <tr>
+                <td style="text-align:center"> BT </td>
+                <td style="text-align:left"><a href="/panel/task_detail?id=1052"> wzen-077 (2) </a></td>
+                <td> queued </td>
+                <td style="text-align:center"><a href="/panel/task_action?id=1052&amp;action=start"> start </a></td>
+                <td style="text-align:right"> 6.85 GB </td>
+                <td style="text-align:right"> 0.0% </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td><a href="/panel/task_delete?id=1052&amp;action=delete_task"
+                        onclick="return confirm(&quot;Delete Task?&quot;);">delete</a>/ <a
+                        href="/panel/task_delete?id=1052&amp;action=delete_all"
+                        onclick="return confirm(&quot;Delete Task and Downloaded Files?&quot;);">incl files</a></td>
+            </tr>
+            <tr>
+                <td style="text-align:center"> BT </td>
+                <td style="text-align:left"><a href="/panel/task_detail?id=1051"> wzen-077-4k </a></td>
+                <td> queued </td>
+                <td style="text-align:center"><a href="/panel/task_action?id=1051&amp;action=start"> start </a></td>
+                <td style="text-align:right"> 11.4 GB </td>
+                <td style="text-align:right"> 0.0% </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td><a href="/panel/task_delete?id=1051&amp;action=delete_task"
+                        onclick="return confirm(&quot;Delete Task?&quot;);">delete</a>/ <a
+                        href="/panel/task_delete?id=1051&amp;action=delete_all"
+                        onclick="return confirm(&quot;Delete Task and Downloaded Files?&quot;);">incl files</a></td>
+            </tr>
+            <tr>
+                <td style="text-align:center"> BT </td>
+                <td style="text-align:left"><a href="/panel/task_detail?id=1050"> wzen-077 </a></td>
+                <td> running </td>
+                <td style="text-align:center"><a href="/panel/task_action?id=1050&amp;action=stop"> stop </a></td>
+                <td style="text-align:right"> 6.78 GB </td>
+                <td style="text-align:right"> 0.0% </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td><a href="/panel/task_delete?id=1050&amp;action=delete_task"
+                        onclick="return confirm(&quot;Delete Task?&quot;);">delete</a>/ <a
+                        href="/panel/task_delete?id=1050&amp;action=delete_all"
+                        onclick="return confirm(&quot;Delete Task and Downloaded Files?&quot;);">incl files</a></td>
+            </tr>
+            <tr>
+                <td style="text-align:center"> BT </td>
+                <td style="text-align:left"><a href="/panel/task_detail?id=1049"> WZEN-077 </a></td>
+                <td> queued </td>
+                <td style="text-align:center"><a href="/panel/task_action?id=1049&amp;action=start"> start </a></td>
+                <td style="text-align:right"> 6.77 GB </td>
+                <td style="text-align:right"> 0.0% </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td><a href="/panel/task_delete?id=1049&amp;action=delete_task"
+                        onclick="return confirm(&quot;Delete Task?&quot;);">delete</a>/ <a
+                        href="/panel/task_delete?id=1049&amp;action=delete_all"
+                        onclick="return confirm(&quot;Delete Task and Downloaded Files?&quot;);">incl files</a></td>
+            </tr>
+            <tr>
+                <td style="text-align:center"> BT </td>
+                <td style="text-align:left"><a href="/panel/task_detail?id=1048"> 300ntk-546-C </a></td>
+                <td> running </td>
+                <td style="text-align:center"><a href="/panel/task_action?id=1048&amp;action=stop"> stop </a></td>
+                <td style="text-align:right"> 4.01 GB </td>
+                <td style="text-align:right"> 0.8% </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td><a href="/panel/task_delete?id=1048&amp;action=delete_task"
+                        onclick="return confirm(&quot;Delete Task?&quot;);">delete</a>/ <a
+                        href="/panel/task_delete?id=1048&amp;action=delete_all"
+                        onclick="return confirm(&quot;Delete Task and Downloaded Files?&quot;);">incl files</a></td>
+            </tr>
+            <tr>
+                <td style="text-align:center"> BT </td>
+                <td style="text-align:left"><a href="/panel/task_detail?id=1047"> 300ntk-515-C </a></td>
+                <td> running </td>
+                <td style="text-align:center"><a href="/panel/task_action?id=1047&amp;action=stop"> stop </a></td>
+                <td style="text-align:right"> 2.99 GB </td>
+                <td style="text-align:right"> 2.1% </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td><a href="/panel/task_delete?id=1047&amp;action=delete_task"
+                        onclick="return confirm(&quot;Delete Task?&quot;);">delete</a>/ <a
+                        href="/panel/task_delete?id=1047&amp;action=delete_all"
+                        onclick="return confirm(&quot;Delete Task and Downloaded Files?&quot;);">incl files</a></td>
+            </tr>
+            <tr>
+                <td style="text-align:center"> BT </td>
+                <td style="text-align:left"><a href="/panel/task_detail?id=1046"> LULU-278 (2) </a></td>
+                <td> running </td>
+                <td style="text-align:center"><a href="/panel/task_action?id=1046&amp;action=stop"> stop </a></td>
+                <td style="text-align:right"> 9.47 GB </td>
+                <td style="text-align:right"> 3.5% </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td><a href="/panel/task_delete?id=1046&amp;action=delete_task"
+                        onclick="return confirm(&quot;Delete Task?&quot;);">delete</a>/ <a
+                        href="/panel/task_delete?id=1046&amp;action=delete_all"
+                        onclick="return confirm(&quot;Delete Task and Downloaded Files?&quot;);">incl files</a></td>
+            </tr>
+            <tr>
+                <td style="text-align:center"> BT </td>
+                <td style="text-align:left"><a href="/panel/task_detail?id=1045"> lulu-278 (3) </a></td>
+                <td> running </td>
+                <td style="text-align:center"><a href="/panel/task_action?id=1045&amp;action=stop"> stop </a></td>
+                <td style="text-align:right"> 7.28 GB </td>
+                <td style="text-align:right"> 0.9% </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td><a href="/panel/task_delete?id=1045&amp;action=delete_task"
+                        onclick="return confirm(&quot;Delete Task?&quot;);">delete</a>/ <a
+                        href="/panel/task_delete?id=1045&amp;action=delete_all"
+                        onclick="return confirm(&quot;Delete Task and Downloaded Files?&quot;);">incl files</a></td>
+            </tr>
+            <tr>
+                <td style="text-align:center"> BT </td>
+                <td style="text-align:left"><a href="/panel/task_detail?id=1044"> lulu-278-4k </a></td>
+                <td> running </td>
+                <td style="text-align:center"><a href="/panel/task_action?id=1044&amp;action=stop"> stop </a></td>
+                <td style="text-align:right"> 11.2 GB </td>
+                <td style="text-align:right"> 0.6% </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td><a href="/panel/task_delete?id=1044&amp;action=delete_task"
+                        onclick="return confirm(&quot;Delete Task?&quot;);">delete</a>/ <a
+                        href="/panel/task_delete?id=1044&amp;action=delete_all"
+                        onclick="return confirm(&quot;Delete Task and Downloaded Files?&quot;);">incl files</a></td>
+            </tr>
+            <tr>
+                <td style="text-align:center"> BT </td>
+                <td style="text-align:left"><a href="/panel/task_detail?id=1043"> lulu-278 (2) </a></td>
+                <td> running </td>
+                <td style="text-align:center"><a href="/panel/task_action?id=1043&amp;action=stop"> stop </a></td>
+                <td style="text-align:right"> 7.21 GB </td>
+                <td style="text-align:right"> 89.8% </td>
+                <td style="text-align:right"> 84 KB/s </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td><a href="/panel/task_delete?id=1043&amp;action=delete_task"
+                        onclick="return confirm(&quot;Delete Task?&quot;);">delete</a>/ <a
+                        href="/panel/task_delete?id=1043&amp;action=delete_all"
+                        onclick="return confirm(&quot;Delete Task and Downloaded Files?&quot;);">incl files</a></td>
+            </tr>
+            <tr>
+                <td style="text-align:center"> BT </td>
+                <td style="text-align:left"><a href="/panel/task_detail?id=1042"> lulu-278 </a></td>
+                <td> running </td>
+                <td style="text-align:center"><a href="/panel/task_action?id=1042&amp;action=stop"> stop </a></td>
+                <td style="text-align:right"> 7.23 GB </td>
+                <td style="text-align:right"> 0.1% </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td><a href="/panel/task_delete?id=1042&amp;action=delete_task"
+                        onclick="return confirm(&quot;Delete Task?&quot;);">delete</a>/ <a
+                        href="/panel/task_delete?id=1042&amp;action=delete_all"
+                        onclick="return confirm(&quot;Delete Task and Downloaded Files?&quot;);">incl files</a></td>
+            </tr>
+            <tr>
+                <td style="text-align:center"> BT </td>
+                <td style="text-align:left"><a href="/panel/task_detail?id=1041"> LULU-278 </a></td>
+                <td> running </td>
+                <td style="text-align:center"><a href="/panel/task_action?id=1041&amp;action=stop"> stop </a></td>
+                <td style="text-align:right"> 7.20 GB </td>
+                <td style="text-align:right"> 18.9% </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td><a href="/panel/task_delete?id=1041&amp;action=delete_task"
+                        onclick="return confirm(&quot;Delete Task?&quot;);">delete</a>/ <a
+                        href="/panel/task_delete?id=1041&amp;action=delete_all"
+                        onclick="return confirm(&quot;Delete Task and Downloaded Files?&quot;);">incl files</a></td>
+            </tr>
+            <tr>
+                <td style="text-align:center"> BT </td>
+                <td style="text-align:left"><a href="/panel/task_detail?id=1040"> 20200801m.(HD720P
+                        H264)(prestigepremium)(300NTK... </a></td>
+                <td> running </td>
+                <td style="text-align:center"><a href="/panel/task_action?id=1040&amp;action=stop"> stop </a></td>
+                <td style="text-align:right"> 2.98 GB </td>
+                <td style="text-align:right"> 0.0% </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td><a href="/panel/task_delete?id=1040&amp;action=delete_task"
+                        onclick="return confirm(&quot;Delete Task?&quot;);">delete</a>/ <a
+                        href="/panel/task_delete?id=1040&amp;action=delete_all"
+                        onclick="return confirm(&quot;Delete Task and Downloaded Files?&quot;);">incl files</a></td>
+            </tr>
+            <tr>
+                <td style="text-align:center"> BT </td>
+                <td style="text-align:left"><a href="/panel/task_detail?id=1039"> 300NTK-406 (2) </a></td>
+                <td> running </td>
+                <td style="text-align:center"><a href="/panel/task_action?id=1039&amp;action=stop"> stop </a></td>
+                <td style="text-align:right"> 2.98 GB </td>
+                <td style="text-align:right"> 0.0% </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td><a href="/panel/task_delete?id=1039&amp;action=delete_task"
+                        onclick="return confirm(&quot;Delete Task?&quot;);">delete</a>/ <a
+                        href="/panel/task_delete?id=1039&amp;action=delete_all"
+                        onclick="return confirm(&quot;Delete Task and Downloaded Files?&quot;);">incl files</a></td>
+            </tr>
+            <tr>
+                <td style="text-align:center"> BT </td>
+                <td style="text-align:left"><a href="/panel/task_detail?id=1038"> 300NTK-406 </a></td>
+                <td> running </td>
+                <td style="text-align:center"><a href="/panel/task_action?id=1038&amp;action=stop"> stop </a></td>
+                <td style="text-align:right"> 3.04 GB </td>
+                <td style="text-align:right"> 3.3% </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td><a href="/panel/task_delete?id=1038&amp;action=delete_task"
+                        onclick="return confirm(&quot;Delete Task?&quot;);">delete</a>/ <a
+                        href="/panel/task_delete?id=1038&amp;action=delete_all"
+                        onclick="return confirm(&quot;Delete Task and Downloaded Files?&quot;);">incl files</a></td>
+            </tr>
+            <tr>
+                <td style="text-align:center"> BT </td>
+                <td style="text-align:left"><a href="/panel/task_detail?id=1037"> 300NTK-406.HD </a></td>
+                <td> running </td>
+                <td style="text-align:center"><a href="/panel/task_action?id=1037&amp;action=stop"> stop </a></td>
+                <td style="text-align:right"> 2.55 GB </td>
+                <td style="text-align:right"> 1.8% </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td><a href="/panel/task_delete?id=1037&amp;action=delete_task"
+                        onclick="return confirm(&quot;Delete Task?&quot;);">delete</a>/ <a
+                        href="/panel/task_delete?id=1037&amp;action=delete_all"
+                        onclick="return confirm(&quot;Delete Task and Downloaded Files?&quot;);">incl files</a></td>
+            </tr>
+            <tr>
+                <td style="text-align:center"> BT </td>
+                <td style="text-align:left"><a href="/panel/task_detail?id=1036"> 300NTK-406 (2).mp4 </a></td>
+                <td> running </td>
+                <td style="text-align:center"><a href="/panel/task_action?id=1036&amp;action=stop"> stop </a></td>
+                <td style="text-align:right"> 2.98 GB </td>
+                <td style="text-align:right"> 0.1% </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td><a href="/panel/task_delete?id=1036&amp;action=delete_task"
+                        onclick="return confirm(&quot;Delete Task?&quot;);">delete</a>/ <a
+                        href="/panel/task_delete?id=1036&amp;action=delete_all"
+                        onclick="return confirm(&quot;Delete Task and Downloaded Files?&quot;);">incl files</a></td>
+            </tr>
+            <tr>
+                <td style="text-align:center"> BT </td>
+                <td style="text-align:left"><a href="/panel/task_detail?id=1035"> 300NTK-406.mp4 </a></td>
+                <td> running </td>
+                <td style="text-align:center"><a href="/panel/task_action?id=1035&amp;action=stop"> stop </a></td>
+                <td style="text-align:right"> 2.98 GB </td>
+                <td style="text-align:right"> 0.0% </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td><a href="/panel/task_delete?id=1035&amp;action=delete_task"
+                        onclick="return confirm(&quot;Delete Task?&quot;);">delete</a>/ <a
+                        href="/panel/task_delete?id=1035&amp;action=delete_all"
+                        onclick="return confirm(&quot;Delete Task and Downloaded Files?&quot;);">incl files</a></td>
+            </tr>
+            <tr>
+                <td style="text-align:center"> BT </td>
+                <td style="text-align:left"><a href="/panel/task_detail?id=1034"> magnet:[javdb.com]300NTK-406.mp4 </a>
+                </td>
+                <td> running </td>
+                <td style="text-align:center"><a href="/panel/task_action?id=1034&amp;action=stop"> stop </a></td>
+                <td style="text-align:right"> 0 B </td>
+                <td style="text-align:right"> 0.0% </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td><a href="/panel/task_delete?id=1034&amp;action=delete_task"
+                        onclick="return confirm(&quot;Delete Task?&quot;);">delete</a>/ <a
+                        href="/panel/task_delete?id=1034&amp;action=delete_all"
+                        onclick="return confirm(&quot;Delete Task and Downloaded Files?&quot;);">incl files</a></td>
+            </tr>
+            <tr>
+                <td style="text-align:center"> BT </td>
+                <td style="text-align:left"><a href="/panel/task_detail?id=1033"> ntk-406-C </a></td>
+                <td> running </td>
+                <td style="text-align:center"><a href="/panel/task_action?id=1033&amp;action=stop"> stop </a></td>
+                <td style="text-align:right"> 3.10 GB </td>
+                <td style="text-align:right"> 10.2% </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td><a href="/panel/task_delete?id=1033&amp;action=delete_task"
+                        onclick="return confirm(&quot;Delete Task?&quot;);">delete</a>/ <a
+                        href="/panel/task_delete?id=1033&amp;action=delete_all"
+                        onclick="return confirm(&quot;Delete Task and Downloaded Files?&quot;);">incl files</a></td>
+            </tr>
+            <tr>
+                <td style="text-align:center"> BT </td>
+                <td style="text-align:left"><a href="/panel/task_detail?id=1031"> HMRK-006 (2) </a></td>
+                <td> running </td>
+                <td style="text-align:center"><a href="/panel/task_action?id=1031&amp;action=stop"> stop </a></td>
+                <td style="text-align:right"> 2.79 GB </td>
+                <td style="text-align:right"> 100.0% </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td><a href="/panel/task_delete?id=1031&amp;action=delete_task"
+                        onclick="return confirm(&quot;Delete Task?&quot;);">delete</a>/ <a
+                        href="/panel/task_delete?id=1031&amp;action=delete_all"
+                        onclick="return confirm(&quot;Delete Task and Downloaded Files?&quot;);">incl files</a></td>
+            </tr>
+            <tr>
+                <td style="text-align:center"> BT </td>
+                <td style="text-align:left"><a href="/panel/task_detail?id=1028"> 第一會所新片@SIS001@KNMB-071 </a></td>
+                <td> running </td>
+                <td style="text-align:center"><a href="/panel/task_action?id=1028&amp;action=stop"> stop </a></td>
+                <td style="text-align:right"> 3.97 GB </td>
+                <td style="text-align:right"> 0.0% </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td><a href="/panel/task_delete?id=1028&amp;action=delete_task"
+                        onclick="return confirm(&quot;Delete Task?&quot;);">delete</a>/ <a
+                        href="/panel/task_delete?id=1028&amp;action=delete_all"
+                        onclick="return confirm(&quot;Delete Task and Downloaded Files?&quot;);">incl files</a></td>
+            </tr>
+            <tr>
+                <td style="text-align:center"> BT </td>
+                <td style="text-align:left"><a href="/panel/task_detail?id=1027"> knmb-071 (2) </a></td>
+                <td> running </td>
+                <td style="text-align:center"><a href="/panel/task_action?id=1027&amp;action=stop"> stop </a></td>
+                <td style="text-align:right"> 5.83 GB </td>
+                <td style="text-align:right"> 1.1% </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td><a href="/panel/task_delete?id=1027&amp;action=delete_task"
+                        onclick="return confirm(&quot;Delete Task?&quot;);">delete</a>/ <a
+                        href="/panel/task_delete?id=1027&amp;action=delete_all"
+                        onclick="return confirm(&quot;Delete Task and Downloaded Files?&quot;);">incl files</a></td>
+            </tr>
+            <tr>
+                <td style="text-align:center"> BT </td>
+                <td style="text-align:left"><a href="/panel/task_detail?id=1026"> magnet:[javdb.com]@KNMB-071.mp4 </a>
+                </td>
+                <td> running </td>
+                <td style="text-align:center"><a href="/panel/task_action?id=1026&amp;action=stop"> stop </a></td>
+                <td style="text-align:right"> 0 B </td>
+                <td style="text-align:right"> 0.0% </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td><a href="/panel/task_delete?id=1026&amp;action=delete_task"
+                        onclick="return confirm(&quot;Delete Task?&quot;);">delete</a>/ <a
+                        href="/panel/task_delete?id=1026&amp;action=delete_all"
+                        onclick="return confirm(&quot;Delete Task and Downloaded Files?&quot;);">incl files</a></td>
+            </tr>
+            <tr>
+                <td style="text-align:center"> BT </td>
+                <td style="text-align:left"><a href="/panel/task_detail?id=1025"> knmb-071 </a></td>
+                <td> running </td>
+                <td style="text-align:center"><a href="/panel/task_action?id=1025&amp;action=stop"> stop </a></td>
+                <td style="text-align:right"> 3.99 GB </td>
+                <td style="text-align:right"> 0.5% </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td><a href="/panel/task_delete?id=1025&amp;action=delete_task"
+                        onclick="return confirm(&quot;Delete Task?&quot;);">delete</a>/ <a
+                        href="/panel/task_delete?id=1025&amp;action=delete_all"
+                        onclick="return confirm(&quot;Delete Task and Downloaded Files?&quot;);">incl files</a></td>
+            </tr>
+            <tr>
+                <td style="text-align:center"> BT </td>
+                <td style="text-align:left"><a href="/panel/task_detail?id=1024"> KNMB-071 </a></td>
+                <td> running </td>
+                <td style="text-align:center"><a href="/panel/task_action?id=1024&amp;action=stop"> stop </a></td>
+                <td style="text-align:right"> 3.96 GB </td>
+                <td style="text-align:right"> 0.9% </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td><a href="/panel/task_delete?id=1024&amp;action=delete_task"
+                        onclick="return confirm(&quot;Delete Task?&quot;);">delete</a>/ <a
+                        href="/panel/task_delete?id=1024&amp;action=delete_all"
+                        onclick="return confirm(&quot;Delete Task and Downloaded Files?&quot;);">incl files</a></td>
+            </tr>
+            <tr>
+                <td style="text-align:center"> BT </td>
+                <td style="text-align:left"><a href="/panel/task_detail?id=1023"> nhdtb-91204 </a></td>
+                <td> running </td>
+                <td style="text-align:center"><a href="/panel/task_action?id=1023&amp;action=stop"> stop </a></td>
+                <td style="text-align:right"> 2.69 GB </td>
+                <td style="text-align:right"> 100.0% </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td><a href="/panel/task_delete?id=1023&amp;action=delete_task"
+                        onclick="return confirm(&quot;Delete Task?&quot;);">delete</a>/ <a
+                        href="/panel/task_delete?id=1023&amp;action=delete_all"
+                        onclick="return confirm(&quot;Delete Task and Downloaded Files?&quot;);">incl files</a></td>
+            </tr>
+            <tr>
+                <td style="text-align:center"> BT </td>
+                <td style="text-align:left"><a href="/panel/task_detail?id=1022"> 200GANA-2913.HD </a></td>
+                <td> running </td>
+                <td style="text-align:center"><a href="/panel/task_action?id=1022&amp;action=stop"> stop </a></td>
+                <td style="text-align:right"> 2.93 GB </td>
+                <td style="text-align:right"> 9.4% </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td><a href="/panel/task_delete?id=1022&amp;action=delete_task"
+                        onclick="return confirm(&quot;Delete Task?&quot;);">delete</a>/ <a
+                        href="/panel/task_delete?id=1022&amp;action=delete_all"
+                        onclick="return confirm(&quot;Delete Task and Downloaded Files?&quot;);">incl files</a></td>
+            </tr>
+            <tr>
+                <td style="text-align:center"> BT </td>
+                <td style="text-align:left"><a href="/panel/task_detail?id=1021"> 200GANA-2913 (2) </a></td>
+                <td> running </td>
+                <td style="text-align:center"><a href="/panel/task_action?id=1021&amp;action=stop"> stop </a></td>
+                <td style="text-align:right"> 3.30 GB </td>
+                <td style="text-align:right"> 100.0% </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td><a href="/panel/task_delete?id=1021&amp;action=delete_task"
+                        onclick="return confirm(&quot;Delete Task?&quot;);">delete</a>/ <a
+                        href="/panel/task_delete?id=1021&amp;action=delete_all"
+                        onclick="return confirm(&quot;Delete Task and Downloaded Files?&quot;);">incl files</a></td>
+            </tr>
+            <tr>
+                <td style="text-align:center"> BT </td>
+                <td style="text-align:left"><a href="/panel/task_detail?id=1020"> 200GANA-2913 </a></td>
+                <td> running </td>
+                <td style="text-align:center"><a href="/panel/task_action?id=1020&amp;action=stop"> stop </a></td>
+                <td style="text-align:right"> 2.35 GB </td>
+                <td style="text-align:right"> 0.9% </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td><a href="/panel/task_delete?id=1020&amp;action=delete_task"
+                        onclick="return confirm(&quot;Delete Task?&quot;);">delete</a>/ <a
+                        href="/panel/task_delete?id=1020&amp;action=delete_all"
+                        onclick="return confirm(&quot;Delete Task and Downloaded Files?&quot;);">incl files</a></td>
+            </tr>
+            <tr>
+                <td style="text-align:center"> BT </td>
+                <td style="text-align:left"><a href="/panel/task_detail?id=1019"> 300MIUM-858 (2) </a></td>
+                <td> stopped </td>
+                <td style="text-align:center"><a href="/panel/task_action?id=1019&amp;action=start"> start </a></td>
+                <td style="text-align:right"> 2.35 GB </td>
+                <td style="text-align:right"> 100.0% </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td><a href="/panel/task_delete?id=1019&amp;action=delete_task"
+                        onclick="return confirm(&quot;Delete Task?&quot;);">delete</a>/ <a
+                        href="/panel/task_delete?id=1019&amp;action=delete_all"
+                        onclick="return confirm(&quot;Delete Task and Downloaded Files?&quot;);">incl files</a></td>
+            </tr>
+            <tr>
+                <td style="text-align:center"> BT </td>
+                <td style="text-align:left"><a href="/panel/task_detail?id=1009"> DPMI-086 </a></td>
+                <td> stopped </td>
+                <td style="text-align:center"><a href="/panel/task_action?id=1009&amp;action=start"> start </a></td>
+                <td style="text-align:right"> 5.89 GB </td>
+                <td style="text-align:right"> 100.0% </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td><a href="/panel/task_delete?id=1009&amp;action=delete_task"
+                        onclick="return confirm(&quot;Delete Task?&quot;);">delete</a>/ <a
+                        href="/panel/task_delete?id=1009&amp;action=delete_all"
+                        onclick="return confirm(&quot;Delete Task and Downloaded Files?&quot;);">incl files</a></td>
+            </tr>
+            <tr>
+                <td style="text-align:center"> BT </td>
+                <td style="text-align:left"><a href="/panel/task_detail?id=1007"> SSIS-737-UC </a></td>
+                <td> stopped </td>
+                <td style="text-align:center"><a href="/panel/task_action?id=1007&amp;action=start"> start </a></td>
+                <td style="text-align:right"> 6.54 GB </td>
+                <td style="text-align:right"> 100.0% </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td><a href="/panel/task_delete?id=1007&amp;action=delete_task"
+                        onclick="return confirm(&quot;Delete Task?&quot;);">delete</a>/ <a
+                        href="/panel/task_delete?id=1007&amp;action=delete_all"
+                        onclick="return confirm(&quot;Delete Task and Downloaded Files?&quot;);">incl files</a></td>
+            </tr>
+            <tr>
+                <td style="text-align:center"> BT </td>
+                <td style="text-align:left"><a href="/panel/task_detail?id=1006"> magnet:[javdb.com]SABA-205.torrent
+                    </a></td>
+                <td> running </td>
+                <td style="text-align:center"><a href="/panel/task_action?id=1006&amp;action=stop"> stop </a></td>
+                <td style="text-align:right"> 0 B </td>
+                <td style="text-align:right"> 0.0% </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td><a href="/panel/task_delete?id=1006&amp;action=delete_task"
+                        onclick="return confirm(&quot;Delete Task?&quot;);">delete</a>/ <a
+                        href="/panel/task_delete?id=1006&amp;action=delete_all"
+                        onclick="return confirm(&quot;Delete Task and Downloaded Files?&quot;);">incl files</a></td>
+            </tr>
+            <tr>
+                <td style="text-align:center"> BT </td>
+                <td style="text-align:left"><a href="/panel/task_detail?id=1005"> SABA-205 貧乳にサスペンダーをつけている女子は小... </a>
+                </td>
+                <td> running </td>
+                <td style="text-align:center"><a href="/panel/task_action?id=1005&amp;action=stop"> stop </a></td>
+                <td style="text-align:right"> 1.46 GB </td>
+                <td style="text-align:right"> 0.0% </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td><a href="/panel/task_delete?id=1005&amp;action=delete_task"
+                        onclick="return confirm(&quot;Delete Task?&quot;);">delete</a>/ <a
+                        href="/panel/task_delete?id=1005&amp;action=delete_all"
+                        onclick="return confirm(&quot;Delete Task and Downloaded Files?&quot;);">incl files</a></td>
+            </tr>
+            <tr>
+                <td style="text-align:center"> BT </td>
+                <td style="text-align:left"><a href="/panel/task_detail?id=1004"> 第一會所新片@SIS001@(S級素人)(SABA-205)貧乳にサ...
+                    </a></td>
+                <td> running </td>
+                <td style="text-align:center"><a href="/panel/task_action?id=1004&amp;action=stop"> stop </a></td>
+                <td style="text-align:right"> 1.46 GB </td>
+                <td style="text-align:right"> 0.0% </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td><a href="/panel/task_delete?id=1004&amp;action=delete_task"
+                        onclick="return confirm(&quot;Delete Task?&quot;);">delete</a>/ <a
+                        href="/panel/task_delete?id=1004&amp;action=delete_all"
+                        onclick="return confirm(&quot;Delete Task and Downloaded Files?&quot;);">incl files</a></td>
+            </tr>
+            <tr>
+                <td style="text-align:center"> BT </td>
+                <td style="text-align:left"><a href="/panel/task_detail?id=1002"> HUNTB-393 </a></td>
+                <td> stopped </td>
+                <td style="text-align:center"><a href="/panel/task_action?id=1002&amp;action=start"> start </a></td>
+                <td style="text-align:right"> 10.5 GB </td>
+                <td style="text-align:right"> 100.0% </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td><a href="/panel/task_delete?id=1002&amp;action=delete_task"
+                        onclick="return confirm(&quot;Delete Task?&quot;);">delete</a>/ <a
+                        href="/panel/task_delete?id=1002&amp;action=delete_all"
+                        onclick="return confirm(&quot;Delete Task and Downloaded Files?&quot;);">incl files</a></td>
+            </tr>
+            <tr>
+                <td style="text-align:center"> BT </td>
+                <td style="text-align:left"><a href="/panel/task_detail?id=1000"> 413INSTC-298 (3) </a></td>
+                <td> stopped </td>
+                <td style="text-align:center"><a href="/panel/task_action?id=1000&amp;action=start"> start </a></td>
+                <td style="text-align:right"> 3.69 GB </td>
+                <td style="text-align:right"> 100.0% </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td style="text-align:right"> 0 KB/s </td>
+                <td><a href="/panel/task_delete?id=1000&amp;action=delete_task"
+                        onclick="return confirm(&quot;Delete Task?&quot;);">delete</a>/ <a
+                        href="/panel/task_delete?id=1000&amp;action=delete_all"
+                        onclick="return confirm(&quot;Delete Task and Downloaded Files?&quot;);">incl files</a></td>
+            </tr>
+        </tbody>
+    </table> <br>[RSS feed disabled] <div id="monica-content-root" class="monica-widget"></div>
+</body>
