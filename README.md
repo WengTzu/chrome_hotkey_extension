@@ -16,7 +16,6 @@
 
     b.選取關鍵字輸入Javdb查詢
 
-
 2.Javdb顯示優化
 
 "javdb.js"
@@ -32,3 +31,10 @@
 3.sehuatang優化
 
 #很久沒用了，暫不更新
+
+
+4.Bitcomet顯示優化
+
+[bitcomet_web.js](https://github.com/WengTzu/chrome_hotkey_extension/blob/main/bitcomet_web.js "bitcomet_web.js")
+
+    bitcomet的web(/panel/task_list)介面，重複番號的頁面標示同一個顏色
