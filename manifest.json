@@ -22,12 +22,12 @@
     "contextMenus"
   ],
   "commands": {
-    // "copy-magnet-name": {  
-    //   "description": "複製magnet與thread_subject"  
-    // },
-    // "native_messaging" :{
-    //   "description": "native message"
-    // },
+    "copy-magnet-name": {  
+      "description": "複製magnet與thread_subject"  
+    },
+    "native_messaging": {
+      "description": "native message"
+    },
     "search_on_jav": {
       "suggested_key": {
         "default": "Ctrl+Shift+S",
@@ -37,36 +37,30 @@
     },
     "search_on_cambridge": {
       "suggested_key": {
+        "default": "Ctrl+Shift+W",
         "windows": "Ctrl+Shift+W"
       },
       "description": "search_on_cambridge (Ctrl+Shift+W)"
     },
     "search_on_longman": {
-      // "suggested_key": {
-      //   "windows": "Ctrl+Shift+E"
-      // },
       "description": "search_on_longman (Ctrl+Shift+E)"
     },
     "search_on_yahoo": {
-      // "suggested_key": {
-      //   "windows": "Ctrl+Shift+D"
-      // },
       "description": "search_on_yahoo (Ctrl+Shift+D)"
     },
     "search_on_skell": {
-      // "suggested_key": {
-      //   "windows": "Ctrl+Shift+F"
-      // },
       "description": "search_on_skell (Ctrl+Shift+F)"
     },
     "search_on_wordhippo": {
       "suggested_key": {
+        "default": "Ctrl+Shift+A",
         "windows": "Ctrl+Shift+A"
       },
       "description": "search_on_wordhippo (Ctrl+Shift+A)"
     },
     "search_on_google": {
       "suggested_key": {
+        "default": "Ctrl+Shift+G",
         "windows": "Ctrl+Shift+G"
       },
       "description": "search_on_google (Ctrl+Shift+G)"
