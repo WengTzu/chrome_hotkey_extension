@@ -40,14 +40,14 @@ chrome.commands.onCommand.addListener(function (command, tab) {
         // }
     }
 
-    // chrome.scripting.executeScript({
-    //     target: { tabId: tab.id },
-    //     function: getSelectedTextFromPage
-    // }, (results) => {
-    //     // results[0].result will contain the value returned by getSelectedTextFromPage
-    //     selectedTextGlobal = results[0].result;
-    //     console.log('Selected text:', results[0].result);
-    // });
+    chrome.scripting.executeScript({
+        target: { tabId: tab.id },
+        function: getSelectedTextFromPage
+    }, (results) => {
+        // results[0].result will contain the value returned by getSelectedTextFromPage
+        selectedTextGlobal = results[0].result;
+        console.log('Selected text:', results[0].result);
+    });
 
     //const tabId = getTabId()
     if (command == "copy-magnet-name") {
