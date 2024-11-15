@@ -1,6 +1,11 @@
-const JELLYFIN_URL_QUERY = "https://192.168.50.7:2096/web/#/search.html?query=";
-// Insert an iframe
-function insertIframe(keyword = '777', position = "upper", id="jellyfin_inserted") {
+(async () => {
+
+    // yourjellyfinURL
+  const { JELLYFIN_URL_QUERY = "https://192.168.7.7/web/#/search.html?query=" } = await import(chrome.runtime.getURL('config.js'));
+    
+
+  // Insert an iframe
+  function insertIframe(keyword = '777', position = "upper", id="jellyfin_inserted") {
     var iframe = document.createElement('iframe');
     iframe.setAttribute('src', JELLYFIN_URL_QUERY + keyword);
     iframe.setAttribute('id', id);
@@ -64,9 +69,9 @@ function insertIframe(keyword = '777', position = "upper", id="jellyfin_inserted
     }
 
 
-}
+  }
 
-function getFemaleActor() {
+  function getFemaleActor() {
     // Step 1: Select all div elements with class "panel-block"
     const panelBlocks = document.querySelectorAll('.panel-block');
 
@@ -87,15 +92,15 @@ function getFemaleActor() {
         return femaleActorNames;
     }
     return [];
-}
+  }
 
-// insert by actor name
-// getFemaleActor().forEach(actor => {
-//     insertIframe(actor, "lower");
-// });
-// insert by ssid
+  // insert by actor name
+  // getFemaleActor().forEach(actor => {
+  //     insertIframe(actor, "lower");
+  // });
+  // insert by ssid
 
-window.addEventListener('message', function (event) {
+  window.addEventListener('message', function (event) {
     // Check the origin of the message to ensure it's from a trusted source
     if (event.origin !== 'https://javdb.com') {
         return;
@@ -113,9 +118,10 @@ window.addEventListener('message', function (event) {
         // You can add more actions here
     }
 
-}, false);
+  }, false);
 
-ssid = document.querySelector("body > section > div > div.video-detail > h2 > strong:nth-child(1)").innerText
-ssid = ssid.replace(/\s/g, '');
-keyword = ssid.split('-').pop();
-insertIframe(keyword, "upper", "inserted_jellyfin_query");
+  ssid = document.querySelector("body > section > div > div.video-detail > h2 > strong:nth-child(1)").innerText;
+  ssid = ssid.replace(/\s/g, '');
+  keyword = ssid.split('-').pop();
+  insertIframe(keyword, "upper", "inserted_jellyfin_query");
+})();

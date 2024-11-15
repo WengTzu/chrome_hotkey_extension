@@ -67,7 +67,8 @@
     }
   },
   "background": {
-    "service_worker": "event.js"
+    "service_worker": "event.js",
+    "type": "module"
   },
   "content_scripts": [
     {
@@ -102,6 +103,12 @@
       "js": [
         "sehuatang.js"
       ]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["config.js"],
+      "matches": ["<all_urls>"]
     }
   ]
 }
