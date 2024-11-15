@@ -1,5 +1,3 @@
-
-
 function copytitle(){
     var input = document.createElement('input');
     document.body.appendChild(input);
@@ -75,18 +73,16 @@ copyButtons.forEach(button => {
     const magnetLink = button.getAttribute('data-clipboard-text');
     console.log(magnetLink);
     // Modify this line to pass the magnet link to the bitcomet_fetch function
-    bitcometButton.addEventListener('click', () => bitcomet_fetch(magnetLink));
+    bitcometButton.addEventListener('click', () => bitcomet_fetch(magnetLink, bitcometButton));
 
     button.parentNode.insertBefore(bitcometButton, button.nextSibling);
 });
 
 // Step 2: Create and send the POST request
-function bitcomet_fetch(magnet) {
+function bitcomet_fetch(magnet, button) {
     var url = "https://192.168.50.7:10029/panel/task_add_magnet_result";
-    // var magnet = "magnet:?xt=urn:btih:6b1d6b5478b9ca544888f975d6ae2f7b03093c17&dn=[javdb.com]DASS-439-C.torrent";
     var encodedMagnet = encodeURIComponent(magnet);
-    var path = encodeURIComponent("/home/pi/ssd/incomplete");
-    // var params = { url: magnet, save_path: "/home/pi/ssd/incomplete" };
+    var path = encodeURIComponent("/home/sandbox/Downloads/bitcomet_incomplete");
     var bodyContent = "url=" + encodedMagnet + "&save_path=" + path;
 
     fetch(url, {
@@ -94,7 +90,19 @@ function bitcomet_fetch(magnet) {
         headers: {
             "Content-Type": "application/x-www-form-urlencoded",
         },
-        body: bodyContent, // FormData object automatically sets the Content-Type to 'multipart/form-data', which is suitable for form submission
+        body: bodyContent,
+        mode: 'no-cors', // Disable CORS
         credentials: 'include', // Send cookies with cross-origin requests
     })
+    .then(response => {
+        // Since we are using 'no-cors', we cannot access the response content
+        console.log('Request sent, but response is opaque due to no-cors mode.');
+        button.textContent = 'Request Sent';
+        button.style.backgroundColor = 'orange';
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        button.textContent = 'Failed';
+        button.style.backgroundColor = 'red';
+    });
 }
