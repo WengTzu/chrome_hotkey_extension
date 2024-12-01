@@ -80,7 +80,7 @@ copyButtons.forEach(button => {
 
 // Step 2: Create and send the POST request
 function bitcomet_fetch(magnet, button) {
-    var url = "https://192.168.50.7:10029/panel/task_add_magnet_result";
+    var url = "https://192.168.50.210:10029/panel/task_add_magnet_result";
     var encodedMagnet = encodeURIComponent(magnet);
     var path = encodeURIComponent("/home/sandbox/Downloads/bitcomet_incomplete");
     var bodyContent = "url=" + encodedMagnet + "&save_path=" + path;
